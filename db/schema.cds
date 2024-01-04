@@ -20,13 +20,14 @@ entity Incidents : cuid, managed {
 /**
  * Customers entitled to create support Incidents.
 */
-entity Customers : cuid, managed {
-  firstName     : String;
-  lastName      : String;
-  email         : EMailAddress;
-  phone         : PhoneNumber;
-  incidents     : Association to many Incidents on incidents.customer = $self;
-}
+ entity Customers : managed {
+   key ID        : String;
+   firstName     : String;
+   lastName      : String;
+   email         : EMailAddress;
+   phone         : PhoneNumber;
+   incidents     : Association to many Incidents on incidents.customer = $self;
+ }
 
 entity Status : CodeList {
   key code: String enum {
